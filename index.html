@@ -1,13 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentativas de JS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módulo 1 — Variáveis, tipos e operadores</title>
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <h1>Oi Mundão!</h1>
-    <p>Nossas primeiras tentativas de trabalho com Java Script</p>
-  
+  <header>
+    <a class="voltar" href="../">← voltar ao índice</a>
+    <h1>Módulo 1 — Variáveis, tipos e operadores</h1>
+    <p class="sub">const e let, tipos primitivos, template literals e comparação estrita</p>
+  </header>
+
+  <h2>Tipos detectados com typeof</h2>
+  <div class="caixa"><div class="saida" id="tipos"></div></div>
+
+  <h2>Boletim calculado</h2>
+  <div class="caixa"><div class="saida" id="boletim"></div></div>
+
+  <h2>Por que === e não ==</h2>
+  <div class="caixa"><div class="saida" id="comparacoes"></div></div>
+
+  <footer>Abra o console (F12) para ver as mesmas saídas em console.log.</footer>
+
+  <script>
+    // ── Declaração de variáveis ───────────────────────────────────────────
+    const cidade = "Cascavel";   // const: não pode ser reatribuída
+    const numero = 42;
+    const ativo = true;
+    const nada = null;
+    let semValor;                // let sem atribuição vale undefined
+
+    // ── typeof: descobrindo o tipo de cada valor ──────────────────────────
+    const valores = [cidade, numero, ativo, nada, semValor, [1, 2], { a: 1 }];
+
+    const linhasTipos = valores.map((v) => {
+      const mostrado = typeof v === "undefined" ? "undefined" : JSON.stringify(v);
+      return `${mostrado.padEnd(14)} → ${typeof v}`;
+    });
+
+    document.getElementById("tipos").textContent = linhasTipos.join("\n");
+    console.log("Tipos:", linhasTipos);
+
+    // ── Operadores aritméticos e template literals ────────────────────────
+    const aluno = "Ana";
+    const nota1 = 8.5;
+    const nota2 = 6.0;
+    const media = (nota1 + nota2) / 2;
+    const aprovado = media >= 7;
+
+    document.getElementById("boletim").textContent =
+      `Aluna: ${aluno}\n` +
+      `Notas: ${nota1} e ${nota2}\n` +
+      `Média: ${media.toFixed(1)}\n` +
+      `Situação: ${aprovado ? "aprovada" : "em recuperação"}`;
+
+    // ── Comparação solta (==) contra estrita (===) ────────────────────────
+    const testes = [
+      ['"5" == 5', "5" == 5],
+      ['"5" === 5', "5" === 5],
+      ["0 == false", 0 == false],
+      ["0 === false", 0 === false],
+      ["null == undefined", null == undefined],
+      ["null === undefined", null === undefined],
+    ];
+
+    document.getElementById("comparacoes").textContent = testes
+      .map(([expressao, resultado]) => `${expressao.padEnd(20)} → ${resultado}`)
+      .join("\n");
+  </script>
 </body>
 </html>

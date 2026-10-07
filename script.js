@@ -8,14 +8,10 @@ let nomeDaVariavel = "valor da variável";
 let outraVariavel = "valor de outra variável";
 let variavelNumero = "1980";
 let variavelCheironaSala = false;
-let variavelIndefinida;
-
 console.log(nomeDaVariavel);
 console.log(outraVariavel);
 console.log(variavelNumero);
 console.log(variavelCheironaSala);
-console.log(variavelIndefinida);
-console.log(variavelNula);
 
 
 //dia 07-10
